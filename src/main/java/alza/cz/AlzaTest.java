@@ -2,6 +2,7 @@ package alza.cz;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -16,23 +17,28 @@ public class AlzaTest {
     //add time for waiting 5 s
     WebDriverWait browserWait = new WebDriverWait(browser, Duration.ofSeconds(3));
 
-    @Test
-    void buyTelevision () {
+    MainSection mainSection;
 
-        //open web page alza.cz
+    @BeforeEach
+    void beforeTest () {
+        //open the web page alza.cz
         browser.get("https://www.alza.cz/");
 
         //reject cookies
         browserWait.until
-                (ExpectedConditions.elementToBeClickable
-                        (By.cssSelector(".cookies-info__button.cookies-info__button--link.js-cookies-info-reject")))
+                        (ExpectedConditions.elementToBeClickable
+                                (By.cssSelector
+                                        (".cookies-info__button.cookies-info__button--link.js-cookies-info-reject")))
                 .click();
 
+        mainSection = new MainSection(browser);
+    }
+
+    @Test
+    void buyTelevision () {
+
         //click on TV, audio, video section
-        browserWait.until
-                (ExpectedConditions.elementToBeClickable
-                        (By.id("litp18852655")))
-                .click();
+       mainSection.mainMenuTVAudioVideo();
 
         //click on TV section
         browserWait.until
