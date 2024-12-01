@@ -7,21 +7,23 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class SecondSection {
+public class TvSection {
+
     WebDriver browser;
     WebDriverWait browserWait;
 
-    //initialization of browser
-    public SecondSection (WebDriver browser) {
+    public TvSection (WebDriver browser) {
         this.browser = browser;
-        this.browserWait = new WebDriverWait(browser, Duration.ofSeconds(5));
+        this.browserWait = new WebDriverWait(browser, Duration.ofSeconds(4));
     }
 
-    public void TvAudioVideoSection() {
+    //click on cheapest TV
+    public void selectTv() {
         browserWait.until
                         (ExpectedConditions.elementToBeClickable
-                                (By.xpath("//a[@href='https://www.alza.cz/televize/18849604.htm']")))
-                .click();
+                                (By.xpath("//a[@href='/ecg-24-h05t2s2-d9911329.htm']"))).
+                click();
     }
 
 }
+
