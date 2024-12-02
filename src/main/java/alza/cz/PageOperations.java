@@ -26,8 +26,8 @@ public class PageOperations {
                 click();
     }
 
-    //close panel for helping
-    public void helpingPanelClose() {
+        //close panel for helping
+        public void helpingPanelClose() {
         browserWait.until(ExpectedConditions.elementToBeClickable
                         (By.id("chat-open-button")))
                 .click();
