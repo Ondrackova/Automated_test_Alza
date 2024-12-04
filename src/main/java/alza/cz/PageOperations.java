@@ -15,23 +15,23 @@ public class PageOperations {
     public PageOperations (WebDriver browser) {
         this.browser = browser;
         this.browserWait = new WebDriverWait
-                (browser, Duration.ofSeconds(4));
+                (browser, Duration.ofSeconds(5));
     }
 
         //sort from cheapest tv
         public void ascSortingTV() {
         browserWait.until
                         (ExpectedConditions.elementToBeClickable
-                                (By.id("ui-id-3"))).
-                click();
+                                (By.xpath("//*[@id='tabs']/ul/li[3]")))
+                .click();
     }
 
         //close panel for helping
         public void helpingPanelClose() {
-        browserWait.until(ExpectedConditions.elementToBeClickable
-                        (By.id("chat-open-button")))
-                .click();
-    }
+
+            browserWait.until(ExpectedConditions.presenceOfElementLocated
+                    (By.id("chat-open-button")));
+        }
 
 }
 

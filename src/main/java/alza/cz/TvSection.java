@@ -2,6 +2,7 @@ package alza.cz;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -21,9 +22,8 @@ public class TvSection {
     public void selectTv() {
         browserWait.until
                         (ExpectedConditions.elementToBeClickable
-                                (By.xpath("//a[@href='/ecg-24-h05t2s2-d9911329.htm']"))).
+                                (By.xpath("//*[@id='img12632048']"))).
                 click();
     }
-
 }
 
