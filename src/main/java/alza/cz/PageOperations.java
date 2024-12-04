@@ -2,6 +2,7 @@ package alza.cz;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -27,10 +28,11 @@ public class PageOperations {
     }
 
         //close panel for helping
-        public void helpingPanelClose() {
+        public WebElement helpingPanelClose() {
 
             browserWait.until(ExpectedConditions.presenceOfElementLocated
                     (By.id("chat-open-button")));
+            return null;
         }
 
 }

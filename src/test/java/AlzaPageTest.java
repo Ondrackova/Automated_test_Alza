@@ -4,11 +4,14 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.List;
 
 public class AlzaPageTest {
 
@@ -100,6 +103,20 @@ public class AlzaPageTest {
 
         //add one item of the same television
         cartOperations.addOneItem();
+
+        var disabledConPlus = browserWait.until
+                (ExpectedConditions.presenceOfElementLocated(By.cssSelector(".countPlus.disabled")));
+
+        if(disabledConPlus.isDisplayed()) {
+            // if yes, write a message
+            System.out.println("Toto zboží je k dispozici pouze 1x.");
+
+            // end the test
+            System.out.println("Nelze přidat více než 1 kus do košíku.");
+            return; // end the test
+
+        }
+
 
         //cart price - two items
         var pomCartPrice2 = browserWait.until
