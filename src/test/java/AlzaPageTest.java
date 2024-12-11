@@ -69,7 +69,7 @@ public class AlzaPageTest {
         //close panel for helping
         WebElement helpingPanel = pageOperations.helpingPanelClose();
         if (helpingPanel == null) {
-            System.out.println("Element helpingPanel nebyl nalezen!");
+            System.out.println("Element helpingPanel not found!");
         } else {
             helpingPanel.click();
         }
@@ -114,10 +114,10 @@ public class AlzaPageTest {
         //condition for present of disabled button
         if(disabledConPlus.isDisplayed()) {
             // if yes, write a message
-            System.out.println("Toto zboží je k dispozici pouze 1x.");
+            System.out.println("This item is only for 1.");
 
             // end the test
-            System.out.println("Nelze přidat více než 1 kus do košíku.");
+            System.out.println("Cannot add more than 1 piece to cart.");
             return; // end the test
         }
 
