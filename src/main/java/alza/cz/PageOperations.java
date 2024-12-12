@@ -32,7 +32,7 @@ public class PageOperations {
 
             browserWait.until(ExpectedConditions.presenceOfElementLocated
                     (By.id("chat-open-button")));
-            return null;
+            return browser.findElement(By.id("chat-open-button"));
         }
 
 }

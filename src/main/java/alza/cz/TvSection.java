@@ -15,15 +15,15 @@ public class TvSection {
 
     public TvSection (WebDriver browser) {
         this.browser = browser;
-        this.browserWait = new WebDriverWait(browser, Duration.ofSeconds(4));
+        this.browserWait = new WebDriverWait(browser, Duration.ofSeconds(5));
     }
 
     //click on cheapest TV
     public void selectTv() {
-        browserWait.until
-                        (ExpectedConditions.elementToBeClickable
-                                (By.xpath("//*[@id='img12632048']"))).
-                click();
+       browserWait.until
+                       (ExpectedConditions.elementToBeClickable
+                               (By.xpath("//*[@id='boxes']/div[1]/div[1]")))
+               .click();
     }
 }
 

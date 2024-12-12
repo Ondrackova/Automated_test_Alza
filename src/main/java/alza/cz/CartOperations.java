@@ -13,7 +13,7 @@ public class CartOperations {
 
     public CartOperations (WebDriver browser) {
         this.browser = browser;
-        this.browserWait = new WebDriverWait(browser, Duration.ofSeconds(4));
+        this.browserWait = new WebDriverWait(browser, Duration.ofSeconds(5));
     }
 
     //Add item to the cart
