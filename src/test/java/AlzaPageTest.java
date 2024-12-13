@@ -1,14 +1,10 @@
 import alza.cz.*;
-import com.github.dockerjava.api.model.WaitResponse;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -42,7 +38,11 @@ public class AlzaPageTest {
                                 (By.cssSelector
                                         (".cookies-info__button.cookies-info__button--link.js-cookies-info-reject")))
                 .click();
+    }
 
+    @AfterEach
+    void afterTest () {
+        browser.quit();
     }
 
     @Test
@@ -57,8 +57,6 @@ public class AlzaPageTest {
 
         if (helpingPanel.isDisplayed()) {
             helpingPanel.click();
-        } else {
-            System.out.println("Element helpingPanel not found!");
         }
 
         tvSection.selectTv();
@@ -73,8 +71,6 @@ public class AlzaPageTest {
         helpingPanel = pageOperations.helpingPanelClose();
         if (helpingPanel.isDisplayed()) {
             helpingPanel.click();
-        } else {
-            System.out.println("Element helpingPanel not found!");
         }
 
         cartOperations.goToCart();

@@ -21,11 +21,17 @@ public class PageOperations {
 
         //sort from cheapest tv
         public void ascSortingTV() {
-        browserWait.until
-                        (ExpectedConditions.elementToBeClickable
-                                (By.xpath("//*[@id='tabs']/ul/li[3]")))
-                .click();
-    }
+            browserWait.until
+                            (ExpectedConditions.elementToBeClickable
+                                    (By.xpath("//*[@id='tabs']/ul/li[3]")))
+                    .click();
+
+            WebElement loader = browserWait.until(
+                    ExpectedConditions.presenceOfElementLocated(By.cssSelector(".circle-loader-container"))
+            );
+            browserWait.until(ExpectedConditions.invisibilityOf(loader));
+        }
+
 
         //close panel for helping
         public WebElement helpingPanelClose() {
