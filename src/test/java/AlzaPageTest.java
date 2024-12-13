@@ -114,7 +114,7 @@ public class AlzaPageTest {
                 .getText();
 
         pomCartPrice2 = pomCartPrice2.replaceAll
-                ("\\D", ""); // Removes $, €, etc.
+                ("\\D", "");
 
         int cartPrice2 = Integer.parseInt(pomCartPrice2);
 

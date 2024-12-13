@@ -26,6 +26,7 @@ public class PageOperations {
                                     (By.xpath("//*[@id='tabs']/ul/li[3]")))
                     .click();
 
+            //waiting for loading full page
             WebElement loader = browserWait.until(
                     ExpectedConditions.presenceOfElementLocated(By.cssSelector(".circle-loader-container"))
             );
