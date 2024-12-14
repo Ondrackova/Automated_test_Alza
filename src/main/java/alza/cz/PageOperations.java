@@ -28,18 +28,21 @@ public class PageOperations {
 
             //waiting for loading full page
             WebElement loader = browserWait.until(
-                    ExpectedConditions.presenceOfElementLocated(By.cssSelector(".circle-loader-container"))
+                    ExpectedConditions.presenceOfElementLocated
+                            (By.cssSelector(".circle-loader-container")));
+            browserWait.until(ExpectedConditions.invisibilityOf(loader)
             );
-            browserWait.until(ExpectedConditions.invisibilityOf(loader));
         }
 
 
         //close panel for helping
         public WebElement helpingPanelClose() {
 
-            browserWait.until(ExpectedConditions.presenceOfElementLocated
+            browserWait.until(ExpectedConditions.elementToBeClickable
                     (By.id("chat-open-button")));
-            return browser.findElement(By.id("chat-open-button"));
+
+            return  browserWait.until(ExpectedConditions.elementToBeClickable
+                    (By.id("chat-open-button")));
         }
 
 }

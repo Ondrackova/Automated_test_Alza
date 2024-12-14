@@ -46,17 +46,18 @@ public class AlzaPageTest {
     }
 
     @Test
-    void buyTelevision () {
+    void buyCheapestTelevision () {
 
         mainSection.mainMenuTVAudioVideo();
         secondSection.TvAudioVideoSection();
         pageOperations.ascSortingTV();
 
-        //close panel for helping
-        WebElement helpingPanel = pageOperations.helpingPanelClose();
-
-        if (helpingPanel.isDisplayed()) {
+        try {
+            //close panel for helping
+            WebElement helpingPanel = pageOperations.helpingPanelClose();
             helpingPanel.click();
+        } catch (Exception e) {
+            System.out.println("Element helpingPanel not found!");
         }
 
         tvSection.selectTv();
@@ -68,9 +69,12 @@ public class AlzaPageTest {
 
         cartOperations.addToCart();
 
-        helpingPanel = pageOperations.helpingPanelClose();
-        if (helpingPanel.isDisplayed()) {
+        try {
+            //close panel for helping
+            WebElement helpingPanel = pageOperations.helpingPanelClose();
             helpingPanel.click();
+        } catch (Exception e) {
+            System.out.println("Element helpingPanel not found!");
         }
 
         cartOperations.goToCart();
