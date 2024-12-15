@@ -11,7 +11,8 @@ import java.time.Duration;
 
 public class AlzaPageTest {
 
-    WebDriver browser = WebDriverManager.firefoxdriver().create();
+    WebDriver browser = WebDriverManager.firefoxdriver()
+            .create();
     //add time for waiting 5 s
     WebDriverWait browserWait = new WebDriverWait(browser, Duration.ofSeconds(5));
 
@@ -33,11 +34,7 @@ public class AlzaPageTest {
         cartOperations = new CartOperations(browser);
 
         //reject cookies
-        browserWait.until
-                        (ExpectedConditions.elementToBeClickable
-                                (By.cssSelector
-                                        (".cookies-info__button.cookies-info__button--link.js-cookies-info-reject")))
-                .click();
+        pageOperations.rejectCookies();
     }
 
     @AfterEach
@@ -49,18 +46,16 @@ public class AlzaPageTest {
     void buyCheapestTelevision () {
 
         mainSection.mainMenuTVAudioVideo();
-        secondSection.TvAudioVideoSection();
-        pageOperations.ascSortingTV();
+        pageOperations.helpingPanelClose();
 
-        try {
-            //close panel for helping
-            WebElement helpingPanel = pageOperations.helpingPanelClose();
-            helpingPanel.click();
-        } catch (Exception e) {
-            System.out.println("Element helpingPanel not found!");
-        }
+        secondSection.TvAudioVideoSection();
+        pageOperations.helpingPanelClose();
+
+        pageOperations.ascSortingTV();
+        pageOperations.helpingPanelClose();
 
         tvSection.selectTv();
+        pageOperations.helpingPanelClose();
 
         //variables for expected name of item
         var expectedName = "Televize" + " " + browser.findElement
@@ -68,16 +63,10 @@ public class AlzaPageTest {
                 .getText();
 
         cartOperations.addToCart();
-
-        try {
-            //close panel for helping
-            WebElement helpingPanel = pageOperations.helpingPanelClose();
-            helpingPanel.click();
-        } catch (Exception e) {
-            System.out.println("Element helpingPanel not found!");
-        }
+        pageOperations.helpingPanelClose();
 
         cartOperations.goToCart();
+        pageOperations.helpingPanelClose();
 
         //variable for actual name of item in the basket
         var actualName = browserWait.until
@@ -101,6 +90,7 @@ public class AlzaPageTest {
         System.out.println(actualName);
 
         cartOperations.addOneItem();
+        pageOperations.helpingPanelClose();
 
         //what to do if countPlus is disabled
         if (!browser.findElements(By.cssSelector(".countPlus.disabled")).isEmpty()) {

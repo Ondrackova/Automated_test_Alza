@@ -34,16 +34,30 @@ public class PageOperations {
             );
         }
 
-
         //close panel for helping
-        public WebElement helpingPanelClose() {
+        public void helpingPanelClose() {
 
-            browserWait.until(ExpectedConditions.elementToBeClickable
-                    (By.id("chat-open-button")));
+            try {
+                WebElement helpingPanel= browserWait.until(ExpectedConditions.elementToBeClickable
+                        (By.id("chat-open-button")));
+                helpingPanel.click();
 
-            return  browserWait.until(ExpectedConditions.elementToBeClickable
-                    (By.id("chat-open-button")));
+            } catch (Exception e) {
+                System.out.println("Element helpingPanel not found!");
+            }
         }
 
+        public void rejectCookies () {
+
+            try {
+                WebElement cookie = browserWait.until
+                        (ExpectedConditions.elementToBeClickable
+                            (By.cssSelector
+                                    (".cookies-info__button.cookies-info__button--link.js-cookies-info-reject")));
+                cookie.click();
+         } catch (Exception e) {
+                System.out.println("Cookies panel not found");
+            }
+        }
 }
 
