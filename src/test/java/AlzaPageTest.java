@@ -1,20 +1,10 @@
 import alza.cz.*;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
-
-public class AlzaPageTest {
-
-    WebDriver browser = WebDriverManager.firefoxdriver()
-            .create();
-    //add time for waiting 5 s
-    WebDriverWait browserWait = new WebDriverWait(browser, Duration.ofSeconds(5));
+public class AlzaPageTest extends BaseTest {
 
     MainSection mainSection;
     SecondSection secondSection;
@@ -24,8 +14,8 @@ public class AlzaPageTest {
 
     @BeforeEach
     void beforeTest () {
-        //open the web page alza.cz
-        browser.get("https://www.alza.cz/");
+
+        super.beforeTest();
 
         mainSection = new MainSection(browser);
         secondSection = new SecondSection(browser);
@@ -33,7 +23,6 @@ public class AlzaPageTest {
         pageOperations = new PageOperations(browser);
         cartOperations = new CartOperations(browser);
 
-        //reject cookies
         pageOperations.rejectCookies();
     }
 
