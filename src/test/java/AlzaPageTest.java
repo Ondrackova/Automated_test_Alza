@@ -71,7 +71,7 @@ public class AlzaPageTest extends BaseTest {
 
         pomCartPrice1 = pomCartPrice1.replaceAll
                 ("\\D", "");    // \\D = any non-numeric character, \\d = numbers 0-9
-        int cartPrice1 = Integer.parseInt(pomCartPrice1);
+        var cartPrice1 = Integer.parseInt(pomCartPrice1);
 
         Assertions.assertEquals(expectedName,actualName);
 
@@ -99,7 +99,7 @@ public class AlzaPageTest extends BaseTest {
         pomCartPrice2 = pomCartPrice2.replaceAll
                 ("\\D", "");
 
-        int cartPrice2 = Integer.parseInt(pomCartPrice2);
+        var cartPrice2 = Integer.parseInt(pomCartPrice2);
 
         Assertions.assertEquals(cartPrice1 * 2, cartPrice2);
 
