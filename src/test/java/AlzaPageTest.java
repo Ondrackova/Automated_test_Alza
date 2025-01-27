@@ -1,6 +1,7 @@
 import alza.cz.*;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
@@ -52,7 +53,7 @@ public class AlzaPageTest extends BaseTest {
                 .getText();
 
         cartOperations.addToCart();
-        pageOperations.helpingPanelClose();
+        //pageOperations.helpingPanelClose();
 
         cartOperations.goToCart();
         pageOperations.helpingPanelClose();
@@ -82,13 +83,15 @@ public class AlzaPageTest extends BaseTest {
         pageOperations.helpingPanelClose();
 
         //what to do if countPlus is disabled
-        if (!browser.findElements(By.cssSelector(".countPlus.disabled")).isEmpty()) {
+        try {
             WebElement disabledConPlus = browserWait.until(
                     ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".countPlus.disabled"))
             );
             System.out.println("This item is only for 1.");
             System.out.println("Cannot add more than 1 piece to cart.");
             return;
+        } catch (TimeoutException e) {
+            System.out.println("The test can continue.");
         }
 
         //cart price - two items

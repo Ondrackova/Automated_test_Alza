@@ -22,12 +22,6 @@
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <version>5.9.3</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-params</artifactId>
             <version>5.9.3</version>
             <scope>test</scope>
@@ -57,9 +51,10 @@
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
-            <version>1.4.11</version> <!-- Use the latest version -->
+            <version>1.4.12</version>
         </dependency>
     </dependencies>
+
 
 
 </project>
